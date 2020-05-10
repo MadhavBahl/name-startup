@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Searchbox } from './searchBox/SearchBox';
+import { SearchBox } from './seachBox/SearchBox';
 import { StartupName } from './startupName/StartupName';
 
 import './App.css';
@@ -13,12 +13,10 @@ class App extends Component {
 
 		this.state = {
 			startupNames: [],
-			searchField: ''
 		}
 	}
 
-	searchStartupNames = (searchField) => {
-		// console.log (name(searchField));
+	handleSearchSubmit = (searchField) => {
 		this.setState({ startupNames: name(searchField) });
 	}
 
@@ -26,14 +24,17 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>Startup Name Generator</h1>
-				<Searchbox 
-					placeholder="Search"
-					searchStartupNames={this.searchStartupNames} />
+				<SearchBox
+					placeholderName='Search Startup Names'
+					handleSearchSubmit={this.handleSearchSubmit}
+				/>
 				<div className="startup-names-container">
 					{
-						this.state.startupNames.map(startupName => {
-							console.log('Startup name: ', startupName);
-							return <StartupName startupName={startupName} key={startupName} />
+						this.state.startupNames.map (startupName => {
+							return <StartupName
+								startupName={startupName}
+								key={startupName}
+							/>
 						})
 					}
 				</div>

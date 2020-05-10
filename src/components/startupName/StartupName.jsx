@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './startup-name.css';
 
 export const StartupName = ({ startupName }) => {
